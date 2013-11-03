@@ -8,3 +8,4 @@ killstreak:
     - 100
     on-special:
       give: 100
+on-kill: 50
