@@ -1,4 +1,10 @@
-Kill_5: 50.0
-Kill_10: 100.0
-Kill_15: 200.0
-Kill_20: 500.0
+killstreak:
+  every: 5
+    give: 50
+  specials:
+    - 10
+    - 20
+    - 50
+    - 100
+    on-special:
+      give: 100
