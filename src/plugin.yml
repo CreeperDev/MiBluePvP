@@ -1,0 +1,16 @@
+name: MiBluePvP
+main: net.miblue.MiBluePvP.MiBluePvP
+version: B1.0
+author: Machnikowski
+description: Killstreak plugin for KitPvP servers
+commands:
+    mpvp:
+      usage: /<command>
+      description: root for all commands
+permissions:
+    mpvp.help:
+      default: false
+      description: Allows user access to help commands
+    mpvp.admin:
+      default: false
+      description: Allows user acces to admin commands
