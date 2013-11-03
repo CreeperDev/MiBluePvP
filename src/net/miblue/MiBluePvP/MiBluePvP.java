@@ -8,7 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
 
 import net.milkbowl.vault.economy.*;
-import net.milkbowl.vault.permission.Permission;
 
 import org.bukkit.plugin.*;
 import org.bukkit.event.block.*;
@@ -25,8 +24,7 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
     public static final HashMap<Player, String> latestkill;
     public static final HashMap<Player, Player> latesthitby;
     public static Economy econ = null;
-    public static Permission perms = null;
-   
+
     static {
         killstreak = new HashMap<Player, Integer>();
         latestkill = new HashMap<Player, String>();
@@ -49,7 +47,6 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
             MiBluePvP.killstreak.put(p, 0);
             MiBluePvP.latestkill.put(p, "no kills");
         }
-        setupPermissions();
     }
    // Economy Setup
     private boolean setupEconomy(){
@@ -63,12 +60,6 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
 		econ = rsp.getProvider();
 		return econ != null;
 	}
-    // Permission Setup
-    private boolean setupPermissions(){
-    	RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
-    	perms = rsp.getProvider();
-    	return perms != null;
-    }
    // Disable Setup
     public void onDisable() {
         Bukkit.getLogger().info(getDescription().getName() + " has been disabled! Cya later!");
@@ -153,7 +144,7 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
     public boolean onCommand(CommandSender sender,Command cmd,String Label,String[] args){
     	if(Label.equalsIgnoreCase("mpvp")){
     		if(args.length == 0){
-    			if(perms.has(sender, "mpvp.help") || sender.isOp()){
+    			if(sender.hasPermission("mpvp.help") || sender.isOp()){
     				sender.sendMessage(ChatColor.DARK_AQUA + "Please use /mpvp help for a list of commands!" );
     				return true;
     			}else{
@@ -162,7 +153,7 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
     			}
     		}
     		if(args[0].equalsIgnoreCase("help")){
-    			if(perms.has(sender, "mpvp.help") || sender.isOp()){
+    			if(sender.hasPermission("mpvp.help") || sender.isOp()){
     				sender.sendMessage(ChatColor.DARK_AQUA + "*----MiBluePvP Help----*");
     				sender.sendMessage(ChatColor.GOLD + "/mpvp help ---> Shows list of commands");
     				sender.sendMessage(ChatColor.GOLD + "/mpvp info ---> Shows pluign version information");
@@ -173,7 +164,7 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
     				return true;
     			}
     		}else if(args[0].equalsIgnoreCase("info")){
-    			if(perms.has(sender, "mpvp.admin") || sender.isOp()){
+    			if(sender.hasPermission("mpvp.admin") || sender.isOp()){
     				sender.sendMessage(ChatColor.GREEN + "[" + getDescription().getName() + "] " + getDescription().getVersion() + " written by " + getDescription().getAuthors());
     				return true;
     			}else{
@@ -181,7 +172,7 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
     				return true;
     			}
     		}else if(args[0].equalsIgnoreCase("reload")){
-    			if(perms.has(sender, "mpvp.admin") || sender.isOp()){
+    			if(sender.hasPermission("mpvp.admin") || sender.isOp()){
     				settings.reloadConfig();
     				settings.saveConfig();
     				settings.getConfig();
