@@ -129,21 +129,18 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
         else if (action.equals("add")) {
             MiBluePvP.killstreak.put(p, MiBluePvP.killstreak.get(p) + amount);
         }
-        if (MiBluePvP.killstreak.get(p) == 5 || MiBluePvP.killstreak.get(p) == 10 || MiBluePvP.killstreak.get(p) == 15 || MiBluePvP.killstreak.get(p) == 20) {
+        if (killstreak.get(p) % 5 == 0) {
             this.getServer().broadcastMessage(String.valueOf(this.getPrefix()) + p.getName() + " now has a killstreak of " + MiBluePvP.killstreak.get(p) + "!");
         }
-        if(MiBluePvP.killstreak.get(p) == 5 ){
-        	econ.depositPlayer(p.getName(), getConfig().getInt("Kill_5"));
-        	return;
-        }else if(MiBluePvP.killstreak.get(p) == 10){
-        	econ.depositPlayer(p.getName(), getConfig().getInt("Kill_10"));
-        	return;
-        }else if(MiBluePvP.killstreak.get(p) == 15){
-        	econ.depositPlayer(p.getName(), getConfig().getInt("Kill_15"));
-        	return;
-        }else if(MiBluePvP.killstreak.get(p) == 20){
-        	econ.depositPlayer(p.getName(), getConfig().getInt("Kill_20"));
-        	return;
+        if(killstreak.get(p) % getConfig().getInt("killstreak.every") == 0){
+        	econ.depositPlayer(p.getName(), getConfig().getInt("killstreak.every.give"));
+        }
+        for(int num : getConfig().getIntList("killstreak.special")){
+        	if(amount == num){
+        		getServer().broadcastMessage(ChatColor.GOLD + ChatColor.ITALIC + p.getName() + " now has an AMAZING killstreak of " + num + "!");
+        		p.sendMessage(ChatColor.GREEN + "Since you reached a massive killstreak of " + killstreak.get(p) + ", you have been given " + getConfig().getInt("killstreak.special.on-special") + ".");
+        		econ.depositPlayer(p.getName(), getConfig().getInt("killstreak.special.on-special"));
+        	}
         }
     }
    
