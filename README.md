@@ -10,3 +10,5 @@ Authors:
 Requires:
   Vault,
   Bukkit 1.6 (or higher)
+
+MiBluePvP is in an eary stage. We soon hope to add new mechanics to the existing base code. 
