@@ -75,10 +75,10 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
         if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             final Player player = event.getPlayer();
             if (player.getItemInHand().getType() == Material.BLAZE_ROD) {
-                player.sendMessage(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("-------------[MiBluePvP]-------------").toString());
+                player.sendMessage(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.STRIKETHROUGH).append("---------------------------------").toString());
                 player.sendMessage(String.valueOf(this.getPrefix()) + "Latest kill: " + ChatColor.GRAY + ChatColor.BOLD + MiBluePvP.latestkill.get(player));
                 player.sendMessage(String.valueOf(this.getPrefix()) + "Killstreak: " + ChatColor.GRAY + ChatColor.BOLD + MiBluePvP.killstreak.get(player));
-                player.sendMessage(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("-------------[MiBluePvP]-------------").toString());
+                player.sendMessage(new StringBuilder().append(ChatColor.GOLD).append(ChatColor.STRIKETHROUGH).append("---------------------------------").toString());
             }
         }
     }
@@ -158,6 +158,7 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
     				sender.sendMessage(ChatColor.GOLD + "/mpvp help ---> Shows list of commands");
     				sender.sendMessage(ChatColor.GOLD + "/mpvp info ---> Shows pluign version information");
     				sender.sendMessage(ChatColor.GOLD + "/mpvp reload ---> Reloads MiBluePvP config.yml");
+    				sender.sendMessage(ChatColor.GOLD + "Blaze Rod: Right Click ---> Get your info");
     				return true;
     			}else{
     				sender.sendMessage(ChatColor.RED + "You do not have access to this command!");
