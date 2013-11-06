@@ -1,0 +1,17 @@
++++ OutLine +++
+
+Priorites:
+  Need to Hook into MiBlueCreditsCore
+    Requirment or add-on?
+  Needs refactoring
+    Moving events to seperate class
+
+
+Add-ons:
+  Better chat hooks
+  Custom events
+  
+Known Issues:
+  Reload config
+    Dosent change settings
+  
