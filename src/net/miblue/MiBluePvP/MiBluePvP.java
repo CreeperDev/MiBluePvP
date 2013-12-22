@@ -49,6 +49,7 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
         }
     }
    // Economy Setup
+   // Hook MiBlue Credit system 
     private boolean setupEconomy(){
 		if (getServer().getPluginManager().getPlugin("Vault") == null){
 			return false;
@@ -173,6 +174,7 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
     				return true;
     			}
     		}else if(args[0].equalsIgnoreCase("reload")){
+    			// what the hell is wrong with this statment!!
     			if(sender.hasPermission("mpvp.admin") || sender.isOp()){
     				settings.reloadConfig();
     				settings.saveConfig();
