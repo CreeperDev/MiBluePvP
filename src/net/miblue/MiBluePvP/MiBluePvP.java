@@ -102,8 +102,6 @@ public final class MiBluePvP extends JavaPlugin implements Listener{
             final Player killed = event.getEntity();
             final Player killer = MiBluePvP.latesthitby.get(killed);
             MiBluePvP.latestkill.put(killer, killed.getName());
-            MiBluePvP.econ.depositPlayer(killer.getName(), getConfig().getInt("on-kill"));
-            killer.sendMessage(String.valueOf(this.getPrefix()) + "You have earned 50 Tokens for your kill.");
             this.killStreak(killer, "add", 1);
             event.setDeathMessage(String.valueOf(this.getPrefix()) + killed.getName() + ChatColor.DARK_GRAY + " (Killsteak: " + MiBluePvP.killstreak.get(killed) + ") was killed by " + this.getPrefix() + killer.getName() + ChatColor.DARK_GRAY + " (Killstreak: " + MiBluePvP.killstreak.get(killer) + ")");
             if (MiBluePvP.killstreak.get(killed) > 4) {
